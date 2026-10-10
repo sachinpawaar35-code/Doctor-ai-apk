@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOCTOR AI</title>
+<style>
+body{margin:0;background:#101827;color:white;font-family:Arial;text-align:center}
+header{background:#087f8c;padding:24px;font-size:28px;font-weight:bold}
+main{padding:22px}
+.card{background:#202c40;padding:20px;border-radius:16px;margin:18px auto;max-width:420px}
+button{background:#08a6a6;color:white;border:0;border-radius:10px;padding:14px;margin:7px;font-size:16px}
+input{padding:13px;width:85%;border-radius:9px;border:0}
+#answer{white-space:pre-wrap;line-height:1.6}
+</style>
+</head>
+<body>
+<header>🤖 DOCTOR AI</header>
+<main>
+<div class="card">
+<h2>आपका Personal AI Assistant</h2>
+<p>नमस्ते! मैं आपका AI असिस्टेंट हूँ।</p>
+<input id="question" placeholder="अपना सवाल लिखें">
+<br>
+<button onclick="ask()">सवाल पूछें</button>
+<button onclick="speak()">बोलकर सुनें</button>
+<p id="answer">आपका जवाब यहाँ दिखाई देगा।</p>
+</div>
+</main>
+<script>
+function ask(){
+let q=document.getElementById('question').value.trim();
+let a=document.getElementById('answer');
+if(!q){a.textContent='पहले अपना सवाल लिखें।';return;}
+a.textContent='आपने पूछा: '+q+
+'\n\nयह शुरुआती डेमो है। AI जवाब देने के लिए सुरक्षित AI API जोड़नी होगी।';
+}
+function speak(){
+let t=document.getElementById('answer').textContent;
+if('speechSynthesis' in window){
+speechSynthesis.cancel();
+speechSynthesis.speak(new SpeechSynthesisUtterance(t));
+}else{alert('आपके ब्राउज़र में आवाज़ सपोर्ट नहीं है।');}
+}
+</script>
+</body>
+</html>
